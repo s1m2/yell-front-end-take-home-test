@@ -4,8 +4,13 @@ import type { Job } from '@/types/jobs'
 
 type APIResponse<T> = [null, T[]] | [Error]
 
+const endpoint =
+  import.meta.env.VITE_ENVIRONMENT === 'production'
+    ? import.meta.env.VITE_PRODUCTION_API_ENDPOINT
+    : import.meta.env.VITE_LOCAL_API_ENDPOINT
+
 export const api = axios.create({
-  baseURL: 'http://localhost:4242/api/v1'
+  baseURL: endpoint
 })
 
 export async function fetchData<T>(

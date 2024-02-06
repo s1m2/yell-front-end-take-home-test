@@ -11,7 +11,7 @@ getBusinessesAction()
 
 <template>
   <main class="md:max-w-screen-sm md:mx-auto my-10">
-    <div class="my-10" v-if="isLoading">
+    <div class="animate-pulse my-10" v-if="isLoading">
       <p>Retrieving user information....</p>
     </div>
 

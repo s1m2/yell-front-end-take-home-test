@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import type { Business } from '@/types/business'
 import type { Job } from '@/types/jobs'
@@ -9,6 +9,8 @@ export const useBusinessStore = defineStore('business', () => {
   const jobs = ref<Job[] | []>([])
   const isLoading = ref(false)
   const isError = ref(false)
+  const selectedBusinessId = ref<number | null>(null)
+  const selectedBusiness = computed(() => businesses.value.find((business) => business.id === selectedBusinessId.value))
 
   async function getBusinessesAction() {
     isLoading.value = true
@@ -35,5 +37,5 @@ export const useBusinessStore = defineStore('business', () => {
     isLoading.value = false
   }
 
-  return { isLoading, isError, businesses, jobs, getBusinessesAction, getJobsAction }
+  return { selectedBusinessId, selectedBusiness, isLoading, isError, businesses, jobs, getBusinessesAction, getJobsAction }
 })

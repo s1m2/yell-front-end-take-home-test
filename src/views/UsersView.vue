@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { onMounted } from 'vue'
 import UserCard from '@/components/BusinessCard.vue'
 import AppNotification from '@/components/common/AppNotification.vue'
 import { storeToRefs } from 'pinia'
@@ -6,7 +7,10 @@ import { useBusinessStore } from '@/stores/business'
 
 const { businesses, isLoading, isError } = storeToRefs(useBusinessStore())
 const { getBusinessesAction } = useBusinessStore()
-getBusinessesAction()
+
+onMounted(() => {
+  getBusinessesAction()
+})
 </script>
 
 <template>

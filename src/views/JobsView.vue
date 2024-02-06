@@ -7,16 +7,17 @@ import AppLoader from '@/components/JobsView/AppLoader.vue'
 import { useBusinessStore } from '@/stores/business'
 
 const { getJobsAction } = useBusinessStore()
-const { jobs, isLoading, isError } = storeToRefs(useBusinessStore())
+const { jobs, isLoading, isError, selectedBusiness, selectedBusinessId } = storeToRefs(useBusinessStore())
 
 onMounted(() => {
+  selectedBusinessId.value = Number(useRoute().params.id)
   getJobsAction(Number(useRoute().params.id))
 })
 </script>
 
 <template>
   <main class="mx-4 md:max-w-screen-lg md:mx-auto mb-20">
-    <p class="text-2xl my-4">Jobs</p>
+    <p class="text-2xl my-4">Jobs for : {{ selectedBusiness?.display_name }} Company</p>
     <p class="border-b pb-4 border-gray-300">Here are the jobs available</p>
     <AppLoader class="my-10" v-if="isLoading" />
 

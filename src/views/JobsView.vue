@@ -30,7 +30,7 @@ onMounted(() => {
     </AppNotification>
 
     <AppNotification v-if="!isLoading && !jobs.length && !isError" type="info">
-      <h4 class="font-bold">No legends jobs</h4>
+      <h4 class="font-bold">No jobs found</h4>
       <p class="font-semibold">We could not find any jobs</p>
     </AppNotification>
 

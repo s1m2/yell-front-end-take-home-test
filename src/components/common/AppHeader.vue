@@ -3,7 +3,6 @@ import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
-console.log(router.currentRoute)
 const isLogoutVisible = computed(() => router.currentRoute.value.path !== '/')
 
 function logout() {
@@ -13,7 +12,7 @@ function logout() {
 
 <template>
   <header class="border-yellow-300 p-4 border-b-4">
-    <div class="flex justify-between md:max-w-screen-xl md:mx-auto">
+    <div class="flex justify-between md:max-w-screen-lg md:mx-auto">
       <h1 class="text-2xl font-semibold">Mini Yell</h1>
       <button
         v-if="isLogoutVisible"

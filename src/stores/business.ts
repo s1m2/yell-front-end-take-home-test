@@ -12,6 +12,7 @@ export const useBusinessStore = defineStore('business', () => {
   const selectedBusinessId = ref<number | null>(null)
   const selectedBusiness = computed(() => businesses.value.find((business) => business.id === selectedBusinessId.value))
 
+
   async function getBusinessesAction() {
     isLoading.value = true
     const [error, data] = await getBusinesses()

@@ -2,7 +2,7 @@ import axios, { type AxiosResponse } from 'axios'
 import type { Business } from '@/types/business'
 import type { Job } from '@/types/jobs'
 
-type APIResponse<T> = [null, T[]] | [Error]
+type APIResponse<T> = [null, T[]] | [null, T] | [Error]
 
 const endpoint =
   import.meta.env.VITE_ENVIRONMENT === 'production'
